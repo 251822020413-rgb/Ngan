@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中文听力练习：餐厅点餐</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fff9c4 0%, #ffeb3b 100%);
+            color: #5d4037;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffd54f' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 2px solid #ffd54f;
+        }
+        
+        header {
+            background: linear-gradient(to right, #ffb300, #ff8f00);
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .description {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .audio-section {
+            padding: 25px;
+            text-align: center;
+            border-bottom: 1px solid #ffd54f;
+        }
+        
+        h2 {
+            color: #5d4037;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px 0;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .quiz-section {
+            padding: 25px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #5d4037;
+        }
+        
+        .section-title h2 {
+            margin-bottom: 0;
+            margin-right: 10px;
+        }
+        
+        .section-number {
+            background: #ffb300;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #fffde7;
+            border-radius: 10px;
+            border-left: 4px solid #ffb300;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #5d4037;
+            font-size: 17px;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border: 1px solid #ffd54f;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .option:hover {
+            background-color: #fff9c4;
+            border-color: #ffb300;
+            transform: translateY(-2px);
+        }
+        
+        .option input {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+        
+        .fill-blank {
+            margin-top: 10px;
+        }
+        
+        .blank {
+            display: inline-block;
+            margin: 0 5px;
+            width: 150px;
+            padding: 8px 12px;
+            border: 1px solid #ffd54f;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #fffde7;
+        }
+        
+        .blank:focus {
+            border-color: #ffb300;
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 179, 0, 0.5);
+        }
+        
+        .button-section {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        #submit-btn {
+            background: linear-gradient(to right, #ffb300, #ff8f00);
+            color: white;
+        }
+        
+        #submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        #show-answers-btn {
+            background: linear-gradient(to right, #2196F3, #0b7dda);
+            color: white;
+        }
+        
+        #show-answers-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        #reset-btn {
+            background: linear-gradient(to right, #ff9800, #e68a00);
+            color: white;
+        }
+        
+        #reset-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .correct {
+            background-color: #c8e6c9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+        
+        .incorrect {
+            background-color: #ffcdd2;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+        
+        .answer-display {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            display: none;
+            animation: slideIn 0.5s;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .answer-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            background-color: white;
+            border-radius: 8px;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .correct-answer {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+            border-top: 1px solid #ffd54f;
+        }
+        
+        @media (max-width: 600px) {
+            .button-section {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>中文听力练习：餐厅点餐</h1>
+            <p class="description">请听录音，然后回答下面的问题</p>
+        </header>
+        
+        <section class="audio-section">
+            <h2>听力材料</h2>
+            <audio controls>
+                <source src="在饭店吃饭.mp3" type="audio/mp3">
+                您的浏览器不支持音频播放功能。
+            </audio>
+        </section>
+        
+        <section class="quiz-section">
+            <div class="section-title">
+                <div class="section-number">1</div>
+                <h2>选择题</h2>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">1. 客人有几位？</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q1" value="A"> A. 一位</label>
+                    <label class="option"><input type="radio" name="q1" value="B"> B. 两位</label>
+                    <label class="option"><input type="radio" name="q1" value="C"> C. 三位</label>
+                    <label class="option"><input type="radio" name="q1" value="D"> D. 四位</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">2. 客人首先点了什么饮料？</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q2" value="A"> A. 茶</label>
+                    <label class="option"><input type="radio" name="q2" value="B"> B. 咖啡</label>
+                    <label class="option"><input type="radio" name="q2" value="C"> C. 果汁</label>
+                    <label class="option"><input type="radio" name="q2" value="D"> D. 水</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">3. 服务员推荐了什么特色菜？</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q3" value="A"> A. 北京烤鸭</label>
+                    <label class="option"><input type="radio" name="q3" value="B"> B. 红烧肉</label>
+                    <label class="option"><input type="radio" name="q3" value="C"> C. 糖醋鱼</label>
+                    <label class="option"><input type="radio" name="q3" value="D"> D. 宫保鸡丁</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">4. 客人要了多少烤鸭？</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q4" value="A"> A. 一只</label>
+                    <label class="option"><input type="radio" name="q4" value="B"> B. 半只</label>
+                    <label class="option"><input type="radio" name="q4" value="C"> C. 四分之一只</label>
+                    <label class="option"><input type="radio" name="q4" value="D"> D. 不要烤鸭</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">5. 客人最后选择了什么甜点？</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q5" value="A"> A. 苹果</label>
+                    <label class="option"><input type="radio" name="q5" value="B"> B. 西瓜</label>
+                    <label class="option"><input type="radio" name="q5" value="C"> C. 冰淇淋</label>
+                    <label class="option"><input type="radio" name="q5" value="D"> D. 蛋糕</label>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <div class="section-number">2</div>
+                <h2>填空题</h2>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">请根据听力内容填空：</div>
+                <div class="fill-blank">
+                    <p>服务员问客人几位时，客人回答：<span class="blank-container"><input type="text" class="blank" id="blank1"></span>。</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">请根据听力内容填空：</div>
+                <div class="fill-blank">
+                    <p>客人首先点了一杯<span class="blank-container"><input type="text" class="blank" id="blank2"></span>。</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">请根据听力内容填空：</div>
+                <div class="fill-blank">
+                    <p>服务员推荐的特色菜是<span class="blank-container"><input type="text" class="blank" id="blank3"></span>。</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">请根据听力内容填空：</div>
+                <div class="fill-blank">
+                    <p>客人除了烤鸭还点了<span class="blank-container"><input type="text" class="blank" id="blank4"></span>和<span class="blank-container"><input type="text" class="blank" id="blank5"></span>。</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">请根据听力内容填空：</div>
+                <div class="fill-blank">
+                    <p>客人最后选择的甜点是<span class="blank-container"><input type="text" class="blank" id="blank6"></span>。</p>
+                </div>
+            </div>
+            
+            <div class="button-section">
+                <button id="submit-btn">提交答案</button>
+                <button id="show-answers-btn">显示正确答案</button>
+                <button id="reset-btn">重新开始</button>
+            </div>
+            
+            <div id="result" class="result"></div>
+            
+            <div id="answer-display" class="answer-display">
+                <h3>正确答案：</h3>
+                <div id="answers-list"></div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>中文听力练习 &copy; 2023 - 餐厅点餐场景</p>
+        </footer>
+    </div>
+
+    <script>
+        // 正确答案
+        const correctAnswers = {
+            q1: "A",
+            q2: "D",
+            q3: "A",
+            q4: "B",
+            q5: "B",
+            blank1: "一个人",
+            blank2: "水",
+            blank3: "北京烤鸭",
+            blank4: "米饭",
+            blank5: "炒青菜",
+            blank6: "西瓜"
+        };
+        
+        // 题目描述
+        const questionTexts = {
+            q1: "客人有几位？",
+            q2: "客人首先点了什么饮料？",
+            q3: "服务员推荐了什么特色菜？",
+            q4: "客人要了多少烤鸭？",
+            q5: "客人最后选择了什么甜点？",
+            blank1: "服务员问客人几位时，客人回答：",
+            blank2: "客人首先点了一杯",
+            blank3: "服务员推荐的特色菜是",
+            blank4: "客人除了烤鸭还点了",
+            blank5: "和",
+            blank6: "客人最后选择的甜点是"
+        };
+        
+        // 选项内容
+        const options = {
+            q1: {
+                A: "一位",
+                B: "两位",
+                C: "三位",
+                D: "四位"
+            },
+            q2: {
+                A: "茶",
+                B: "咖啡",
+                C: "果汁",
+                D: "水"
+            },
+            q3: {
+                A: "北京烤鸭",
+                B: "红烧肉",
+                C: "糖醋鱼",
+                D: "宫保鸡丁"
+            },
+            q4: {
+                A: "一只",
+                B: "半只",
+                C: "四分之一只",
+                D: "不要烤鸭"
+            },
+            q5: {
+                A: "苹果",
+                B: "西瓜",
+                C: "冰淇淋",
+                D: "蛋糕"
+            }
+        };
+        
+        // 获取DOM元素
+        const submitBtn = document.getElementById('submit-btn');
+        const showAnswersBtn = document.getElementById('show-answers-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const resultDiv = document.getElementById('result');
+        const answerDisplay = document.getElementById('answer-display');
+        const answersList = document.getElementById('answers-list');
+        
+        // 提交答案
+        submitBtn.addEventListener('click', function() {
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+            
+            // 检查选择题答案
+            for (let i = 1; i <= 5; i++) {
+                const questionName = 'q' + i;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                
+                if (selectedOption) {
+                    if (selectedOption.value === correctAnswers[questionName]) {
+                        score++;
+                        // 标记正确答案
+                        selectedOption.parentElement.style.backgroundColor = '#c8e6c9';
+                    } else {
+                        // 标记错误答案
+                        selectedOption.parentElement.style.backgroundColor = '#ffcdd2';
+                    }
+                }
+            }
+            
+            // 检查填空题答案
+            for (let i = 1; i <= 6; i++) {
+                const blankName = 'blank' + i;
+                const blankInput = document.getElementById(blankName);
+                const userAnswer = blankInput.value.trim();
+                
+                if (userAnswer === correctAnswers[blankName]) {
+                    score++;
+                    blankInput.style.backgroundColor = '#c8e6c9';
+                } else {
+                    blankInput.style.backgroundColor = '#ffcdd2';
+                }
+            }
+            
+            // 显示结果
+            resultDiv.textContent = `您的得分：${score}/${totalQuestions}`;
+            resultDiv.className = 'result ' + (score === totalQuestions ? 'correct' : 'incorrect');
+            resultDiv.style.display = 'block';
+            
+            // 滚动到结果区域
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // 显示正确答案
+        showAnswersBtn.addEventListener('click', function() {
+            answersList.innerHTML = '';
+            
+            // 选择题答案
+            for (let i = 1; i <= 5; i++) {
+                const questionName = 'q' + i;
+                const correctAnswerKey = correctAnswers[questionName];
+                const correctAnswerText = options[questionName][correctAnswerKey];
+                
+                const answerItem = document.createElement('div');
+                answerItem.className = 'answer-item';
+                answerItem.innerHTML = `<strong>${i}. ${questionTexts[questionName]}</strong><br>
+                                        <span class="correct-answer">正确答案：${correctAnswerKey}. ${correctAnswerText}</span>`;
+                
+                answersList.appendChild(answerItem);
+            }
+            
+            // 填空题答案
+            for (let i = 1; i <= 6; i++) {
+                const blankName = 'blank' + i;
+                const correctAnswer = correctAnswers[blankName];
+                
+                const answerItem = document.createElement('div');
+                answerItem.className = 'answer-item';
+                answerItem.innerHTML = `<strong>${i+5}. ${questionTexts[blankName]}</strong><br>
+                                        <span class="correct-answer">正确答案：${correctAnswer}</span>`;
+                
+                answersList.appendChild(answerItem);
+            }
+            
+            answerDisplay.style.display = 'block';
+            
+            // 滚动到答案区域
+            answerDisplay.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // 重置所有选择
+        resetBtn.addEventListener('click', function() {
+            // 清除所有单选按钮的选择
+            const allRadioButtons = document.querySelectorAll('input[type="radio"]');
+            allRadioButtons.forEach(radio => {
+                radio.checked = false;
+                radio.parentElement.style.backgroundColor = '';
+            });
+            
+            // 清除所有填空题
+            const allBlanks = document.querySelectorAll('.blank');
+            allBlanks.forEach(blank => {
+                blank.value = '';
+                blank.style.backgroundColor = '';
+            });
+            
+            // 隐藏结果和正确答案
+            resultDiv.style.display = 'none';
+            answerDisplay.style.display = 'none';
+            
+            // 滚动到顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // 为选项添加点击效果
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                // 清除同组其他选项的背景色
+                const groupName = this.querySelector('input').name;
+                document.querySelectorAll(`input[name="${groupName}"]`).forEach(input => {
+                    input.parentElement.style.backgroundColor = '';
+                });
+                
+                // 设置当前选项的背景色
+                this.style.backgroundColor = '#fff9c4';
+            });
+        });
+    </script>
+</body>
+</html>
